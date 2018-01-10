@@ -34,25 +34,24 @@ public class Controller {
     }
 
     @GetMapping("/quiz")
-    public String quiz(Model model, @RequestParam(defaultValue = "0") int page){
-    
-    ArrayList<Long> usedQuestions = new ArrayList<>();
+    public String quiz(Model model, @RequestParam(defaultValue = "0") int page) {
 
-        for (int i = 0; i < 9; i++) {
-            long randomNumber = quizService.getRandomNumber();
-            if (!usedQuestions.contains(randomNumber)) {
-                usedQuestions.add(randomNumber);
-                model.addAttribute("movies2", quizRepo.findById((randomNumber)).getMovies());
-                i++;
-            } else {
-                i++;
-            }
-            
+        ArrayList<Long> usedQuestions = new ArrayList<>();
+
+//        for (int i = 0; i < 9; i++) {
+//            long randomNumber = quizService.getRandomNumber();
+//            if (!usedQuestions.contains(randomNumber)) {
+//                usedQuestions.add(randomNumber);
+//                model.addAttribute("movies2", quizRepo.findById((randomNumber)).getMovies());
+//                i++;
+//            } else {
+//                i++;
+//            }
+//        }
+
         model.addAttribute("movies", movieRepo.findAll(new PageRequest(page, 1)));
         model.addAttribute("currentPage", page);
-
         return "quiz";
     }
-
 
 }

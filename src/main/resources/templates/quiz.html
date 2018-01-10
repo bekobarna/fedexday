@@ -6,30 +6,38 @@
     <meta charset="utf-8" />
 </head>
 <body>
-<h1>Quiz here</h1>
+<h3 th:text="'Movie ' + ${currentPage}"/>
 
-<tr th:each="movie:${movies}">
+
+<table>
+    <tr th:each="movie:${movies}">
     <td th:text="${movie.description}"></td>
+    </tr>
+</table>
+<table>
+    <tr th:each="movie:${movies}">
     <td th:text="${movie.correctTitle}"></td>
     <td th:text="${movie.wrongTitleOne}"></td>
     <td th:text="${movie.wrongTitleTwo}"></td>
-</tr>
-
-<ul class="nav nav-pills">
-    <li class="nav-item" th:each="i : ${#numbers.sequence(0, movies.totalPages-1)}">
-        <!--<a th:href="@{/quiz/(page=${i})}" th:text="${i}" class="nav-link"-->
-           <!--th:classappend="${currentPage} == ${i} ? 'active' : ''"></a>-->
-    </li>
-
-</ul>
-
+    </tr>
+   <tr>
+   <td><ul class="nav nav-pills">
+       <li class="nav-item" th:each="i : ${#numbers.sequence(0, movies.totalPages-1)}"></li>
+   </ul>
+   </td>
+       <td>
 <div th:if="${currentPage} > 1">
     <p><a th:href="@{/quiz/(page=${currentPage-1})}" th:text="Back" class="nav-link"
           th:classappend="${currentPage} > 1 ? 'active' : ''"></a></p>
 </div>
-
+       </td>
+       <td>
 <p><a th:href="@{/quiz/(page=${currentPage+1})}" th:text="Next" class="nav-link"
       th:classappend="${currentPage} == 1 ? 'active' : ''"></a></p>
+       </td>
+   </tr>
+</table>
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

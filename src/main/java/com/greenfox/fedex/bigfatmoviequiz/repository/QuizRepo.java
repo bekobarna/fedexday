@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 public interface QuizRepo extends JpaRepository<Quiz, Long> {
-    Quiz findById(Long id, PageRequest pageRequest);
+    Quiz findById(Long id);
 }
