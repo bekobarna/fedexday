@@ -2,6 +2,8 @@ package com.greenfox.fedex.bigfatmoviequiz.controller;
 
 import com.greenfox.fedex.bigfatmoviequiz.repository.MovieRepo;
 import com.greenfox.fedex.bigfatmoviequiz.repository.QuizRepo;
+import com.greenfox.fedex.bigfatmoviequiz.service.QuizService;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.ui.Model;
@@ -16,8 +18,10 @@ public class Controller {
     QuizRepo quizRepo;
 
     @Autowired
+    QuizService quizService;
+    
+   @Autowired
     MovieRepo movieRepo;
-
 
     @GetMapping({"/",""})
     public String index(){
@@ -31,8 +35,22 @@ public class Controller {
 
     @GetMapping("/quiz")
     public String quiz(Model model, @RequestParam(defaultValue = "0") int page){
+    
+    ArrayList<Long> usedQuestions = new ArrayList<>();
+
+        for (int i = 0; i < 9; i++) {
+            long randomNumber = quizService.getRandomNumber();
+            if (!usedQuestions.contains(randomNumber)) {
+                usedQuestions.add(randomNumber);
+                model.addAttribute("movies2", quizRepo.findById((randomNumber)).getMovies());
+                i++;
+            } else {
+                i++;
+            }
+            
         model.addAttribute("movies", movieRepo.findAll(new PageRequest(page, 1)));
         model.addAttribute("currentPage", page);
+
         return "quiz";
     }
 
