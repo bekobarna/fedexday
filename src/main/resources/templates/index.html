@@ -2,15 +2,28 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <title>The Big Fat Movie Quiz</title>
-    <link rel="stylesheet" href="/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"/>
     <!--<link rel="stylesheet" href="/style.css"/>-->
     <meta charset="utf-8" />
 </head>
 <body>
    <h1>Welcome to the quiz!</h1>
 
+   <h3>The Rules</h3>
+
+    <ul>
+      <li>You will get 10 questions one by one that you need to answer.</li>
+      <li>The questions are about movies, but the story/description of the movie is told by the perspective of the antagonist, not the main character.</li>
+      <li>You have to choose from 3 choices and you will see the correct answer immediately.</li>
+    </ul>
+
    <form th:action="@{/quiz}" method="post" th:object="${todo}">
        <button class="btn btn-danger" type="submit">Let's play!</button>
    </form>
+
+
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 </body>
 </html>
