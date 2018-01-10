@@ -17,6 +17,8 @@ public class Movie {
     String imdbID;
     String imageURL;
 
+    public Movie() {
+    }
 
     public Movie(String description, String correctTitle, String wrongTitleOne, String wrongTitleTwo, String imdbID, String imageURL) {
         this.description = description;

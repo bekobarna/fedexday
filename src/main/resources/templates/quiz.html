@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <title>The Big Fat Movie Quiz</title>
+    <link rel="stylesheet" href="/bootstrap.min.css"/>
+    <!--<link rel="stylesheet" href="/style.css"/>-->
+    <meta charset="utf-8" />
+</head>
+<body>
+<h1>Quiz here</h1>
+
+<tr th:each="movie:${movies}">
+    <td th:text="${movie.description}"></td>
+    <td th:text="${movie.correctTitle}"></td>
+    <td th:text="${movie.wrongTitleOne}"></td>
+    <td th:text="${movie.wrongTitleTwo}"></td>
+</tr>
+
+</body>
+</html>
