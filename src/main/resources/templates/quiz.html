@@ -18,10 +18,21 @@
 
 <ul class="nav nav-pills">
     <li class="nav-item" th:each="i : ${#numbers.sequence(0, movies.totalPages-1)}">
-        <a th:href="@{/quiz/(page=${i})}" th:text="${i}" class="nav-link"
-           th:classappend="${currentPage} == ${i} ? 'active' : ''"></a>
+        <!--<a th:href="@{/quiz/(page=${i})}" th:text="${i}" class="nav-link"-->
+           <!--th:classappend="${currentPage} == ${i} ? 'active' : ''"></a>-->
     </li>
+
 </ul>
+
+<div th:if="${currentPage} > 1">
+    <p><a th:href="@{/quiz/(page=${currentPage-1})}" th:text="Back" class="nav-link"
+          th:classappend="${currentPage} > 1 ? 'active' : ''"></a></p>
+</div>
+
+<p><a th:href="@{/quiz/(page=${currentPage+1})}" th:text="Next" class="nav-link"
+      th:classappend="${currentPage} == 1 ? 'active' : ''"></a></p>
+
+
 
 </body>
 </html>
