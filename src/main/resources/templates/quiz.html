@@ -16,5 +16,12 @@
     <td th:text="${movie.wrongTitleTwo}"></td>
 </tr>
 
+<ul class="nav nav-pills">
+    <li class="nav-item" th:each="i : ${#numbers.sequence(0, movies.totalPages-1)}">
+        <a th:href="@{/quiz/(page=${i})}" th:text="${i}" class="nav-link"
+           th:classappend="${currentPage} == ${i} ? 'active' : ''"></a>
+    </li>
+</ul>
+
 </body>
 </html>
