@@ -22,9 +22,7 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(String description, String correctTitle, String wrongTitleOne,
-        String wrongTitleTwo, String imdbID, String correctImage, String wrong1Image,
-        String wrong2Image) {
+    public Movie(String description, String correctTitle, String wrongTitleOne, String wrongTitleTwo, String imdbID, String correctImage, String wrong1Image, String wrong2Image) {
         this.description = description;
         this.correctTitle = correctTitle;
         this.wrongTitleOne = wrongTitleOne;
