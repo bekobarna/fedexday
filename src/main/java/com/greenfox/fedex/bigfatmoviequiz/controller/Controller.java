@@ -3,13 +3,16 @@ package com.greenfox.fedex.bigfatmoviequiz.controller;
 import com.greenfox.fedex.bigfatmoviequiz.repository.MovieRepo;
 import com.greenfox.fedex.bigfatmoviequiz.repository.QuizRepo;
 import com.greenfox.fedex.bigfatmoviequiz.service.QuizService;
-import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpRequest;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 @org.springframework.stereotype.Controller
 public class Controller {
@@ -37,11 +40,9 @@ public class Controller {
 
     @GetMapping("/quiz")
     public String quiz(Model model, @RequestParam(defaultValue = "0") int page) {
-        
         model.addAttribute("movies", movieRepo.findAll(new PageRequest(page, 1)));
         model.addAttribute("currentPage", page);
-
-        return page <= 10 ? "quiz" : "score";
+        return page < 10 ? "quiz" : "score";
     }
 
     @GetMapping("/score")
@@ -52,9 +53,20 @@ public class Controller {
     }
 
     @GetMapping("/up")
-    public String up(){
+    public String up(HttpServletRequest request){
         score++;
-        return "redirect:/quiz";
+        String referuri = request.getHeader("referer");
+        String page = referuri.substring(referuri.length()-1);
+
+        return page.charAt(page.length()-1) == 'z' ? "redirect:/quiz" : "redirect:/quiz/?page=" + page;
+    }
+
+    @GetMapping("/nada")
+    public String nada(HttpServletRequest request){
+        String referuri = request.getHeader("referer");
+        String page = referuri.substring(referuri.length()-1);
+
+        return page.charAt(page.length()-1) == 'z' ? "redirect:/quiz" : "redirect:/quiz/?page=" + page;
     }
 
 }

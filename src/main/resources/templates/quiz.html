@@ -28,13 +28,9 @@
 <table class="answers">
     <tbody>
     <tr th:each="movie:${movies}">
-        <!--<td th:text="${movie.correctTitle}"></td>-->
-        <!--<td th:text="${movie.wrongTitleOne}"></td>-->
-        <!--<td th:text="${movie.wrongTitleTwo}"></td>-->
-
-        <td><a th:href="@{/up}"><img th:src="@{/reel.jpg}" height="300" width="185"/></a></td>
-        <td><img th:src="@{/reel.jpg}" height="300" width="185"/></td>
-        <td><img th:src="@{/reel.jpg}" height="300" width="185"/></td>
+        <td><a th:href="@{/up}"><img id="correct" onclick="changeImage()" th:src="${movie.correctImage}" height="300" width="185"/></a></td>
+        <td><a th:href="@{/nada}"><img th:src="${movie.wrong1Image}" height="300" width="185"/></a></td>
+        <td><a th:href="@{/nada}"><img th:src="${movie.wrong2Image}" height="300" width="185"/></a></td>
     </tr>
     </tbody>
 </table>
@@ -47,5 +43,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
+<script language="javascript">
+    function changeImage() {
+
+        if (document.getElementById("correct").src == "@{/reel.jpg}")
+        {
+            document.getElementById("correct").src = "@{/good.png}";
+        }
+    }
+</script>
 </body>
 </html>
