@@ -30,6 +30,7 @@ public class Controller {
 
     @GetMapping({"/",""})
     public String index(){
+        score = 0;
         return "index";
     }
 
@@ -42,7 +43,7 @@ public class Controller {
     public String quiz(Model model, @RequestParam(defaultValue = "0") int page) {
         model.addAttribute("movies", movieRepo.findAll(new PageRequest(page, 1)));
         model.addAttribute("currentPage", page);
-        return page < 10 ? "quiz" : "score";
+        return page < 10 ? "quiz" : "redirect:/score";
     }
 
     @GetMapping("/score")
@@ -57,16 +58,24 @@ public class Controller {
         score++;
         String referuri = request.getHeader("referer");
         String page = referuri.substring(referuri.length()-1);
-
-        return page.charAt(page.length()-1) == 'z' ? "redirect:/quiz" : "redirect:/quiz/?page=" + page;
+        int pagee = 1;
+        if (!page.equals("z")){
+            pagee = Integer.parseInt(page);
+            pagee++;
+        }
+        return page.charAt(page.length()-1) == 'z' ? "redirect:/quiz/?page=1" : "redirect:/quiz/?page=" + pagee;
     }
 
     @GetMapping("/nada")
     public String nada(HttpServletRequest request){
         String referuri = request.getHeader("referer");
         String page = referuri.substring(referuri.length()-1);
-
-        return page.charAt(page.length()-1) == 'z' ? "redirect:/quiz" : "redirect:/quiz/?page=" + page;
+        int pagee = 1;
+        if (!page.equals("z")){
+            pagee = Integer.parseInt(page);
+            pagee++;
+        }
+        return page.charAt(page.length()-1) == 'z' ? "redirect:/quiz/?page=1" : "redirect:/quiz/?page=" + pagee;
     }
 
 }

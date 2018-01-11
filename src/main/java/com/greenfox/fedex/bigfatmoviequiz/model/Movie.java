@@ -15,7 +15,6 @@ public class Movie {
     String wrongTitleOne;
     String wrongTitleTwo;
     String imdbID;
-    String imageURL;
     String correctImage;
     String wrong1Image;
     String wrong2Image;
@@ -23,13 +22,12 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(String description, String correctTitle, String wrongTitleOne, String wrongTitleTwo, String imdbID, String imageURL, String correctImage, String wrong1Image, String wrong2Image) {
+    public Movie(String description, String correctTitle, String wrongTitleOne, String wrongTitleTwo, String imdbID, String correctImage, String wrong1Image, String wrong2Image) {
         this.description = description;
         this.correctTitle = correctTitle;
         this.wrongTitleOne = wrongTitleOne;
         this.wrongTitleTwo = wrongTitleTwo;
         this.imdbID = imdbID;
-        this.imageURL = imageURL;
         this.correctImage = correctImage;
         this.wrong1Image = wrong1Image;
         this.wrong2Image = wrong2Image;
@@ -73,14 +71,6 @@ public class Movie {
 
     public void setImdbID(String imdbID) {
         this.imdbID = imdbID;
-    }
-
-    public String getImageURL() {
-        return imageURL;
-    }
-
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
     }
 
     public Long getId() {
