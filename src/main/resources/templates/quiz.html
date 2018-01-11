@@ -6,8 +6,7 @@
     <meta charset="utf-8" />
 </head>
 <body>
-<h3 th:text="'Movie ' + ${currentPage}"/>
-
+<h3 th:text="'Movie ' + ${currentPage + 1}"/>
 
 <table>
     <tr th:each="movie:${movies}">
@@ -16,26 +15,22 @@
 </table>
 <table>
     <tr th:each="movie:${movies}">
-    <td th:text="${movie.correctTitle}"></td>
-    <td th:text="${movie.wrongTitleOne}"></td>
-    <td th:text="${movie.wrongTitleTwo}"></td>
+        <td th:text="${movie.correctTitle}"></td>
+        <td th:text="${movie.wrongTitleOne}"></td>
+        <td th:text="${movie.wrongTitleTwo}"></td>
     </tr>
-   <tr>
-   <td><ul class="nav nav-pills">
-       <li class="nav-item" th:each="i : ${#numbers.sequence(0, movies.totalPages-1)}"></li>
-   </ul>
-   </td>
-       <td>
-<div th:if="${currentPage} > 1">
-    <p><a th:href="@{/quiz/(page=${currentPage-1})}" th:text="Back" class="nav-link"
-          th:classappend="${currentPage} > 1 ? 'active' : ''"></a></p>
-</div>
-       </td>
-       <td>
-<p><a th:href="@{/quiz/(page=${currentPage+1})}" th:text="Next" class="nav-link"
-      th:classappend="${currentPage} == 1 ? 'active' : ''"></a></p>
-       </td>
-   </tr>
+    <tr>
+        <td>
+            <ul class="nav nav-pills">
+                <li class="nav-item" th:each="i : ${#numbers.sequence(0, 10)}"></li>
+            </ul>
+        </td>
+
+        <td><a th:if="${currentPage} == 0" th:href="@{/}" th:text="Back" class="nav-link"></a></td>
+        <td><a th:if="${currentPage} &gt; 0" th:href="@{/quiz/(page=${currentPage-1})}" th:text="Back" class="nav-link"></a></td>
+        <td><a th:href="@{/quiz/(page=${currentPage+1})}" th:text="Next" class="nav-link"></a></td>
+        <td><a th:href="@{/score}" th:text="End" class="nav-link"></a></td>
+    </tr>
 </table>
 
 
