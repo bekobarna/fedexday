@@ -20,7 +20,7 @@
 
 <h3 th:text="'Movie No.' + ${currentPage + 1}"/>
 
-<table>
+<table class="movies">
     <tr th:each="movie:${movies}">
     <td th:text="${movie.description}"></td>
     </tr>
@@ -28,9 +28,13 @@
 <table class="answers">
     <tbody>
     <tr th:each="movie:${movies}">
-        <td th:text="${movie.correctTitle}"></td>
-        <td th:text="${movie.wrongTitleOne}"></td>
-        <td th:text="${movie.wrongTitleTwo}"></td>
+        <!--<td th:text="${movie.correctTitle}"></td>-->
+        <!--<td th:text="${movie.wrongTitleOne}"></td>-->
+        <!--<td th:text="${movie.wrongTitleTwo}"></td>-->
+
+        <td><a th:href="@{/up}"><img th:src="@{/reel.jpg}" height="300" width="185"/></a></td>
+        <td><img th:src="@{/reel.jpg}" height="300" width="185"/></td>
+        <td><img th:src="@{/reel.jpg}" height="300" width="185"/></td>
     </tr>
     </tbody>
 </table>
