@@ -3,13 +3,13 @@
 <head>
     <title>The Big Fat Movie Quiz</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"/>
-    <!--<link rel="stylesheet" href="/style.css"/>-->
+    <link rel="stylesheet" href="/style.css"/>
     <meta charset="utf-8" />
 </head>
 <body>
    <h1>Welcome to the quiz!</h1>
 
-   <h3>The Rules</h3>
+   <h5>The Rules</h5>
 
     <ul>
       <li>You will get 10 questions one by one that you need to answer.</li>
@@ -17,8 +17,8 @@
       <li>You have to choose from 3 choices and you will see the correct answer immediately.</li>
     </ul>
 
-   <form th:action="@{/quiz}" method="post" th:object="${todo}">
-       <button class="btn btn-danger" type="submit">Let's play!</button>
+   <form th:action="@{/quiz}" method="post">
+       <button class="btn btn-success" type="submit">Let's play!</button>
    </form>
 
 

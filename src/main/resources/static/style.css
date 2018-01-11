@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    text-align: center;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+    width: 600px;
+}
+
+li {
+  text-align: left;
+}
+
+h5, li {
+    margin: 15px 15px;
+}
+
+td {
+    text-align: justify;
+}
+
+tbody {
+    text-align: center;
+}
+
+h3 {
+    margin-top: 40px;
+    padding-top: 40px;
+}
+
+.backforth li {
+    list-style-type: none;
+    display: inline-block;
+}
+
+
+.forth{
+    float: right;
+}
+
+.back {
+    float: left;
+}
+
+.answers {
+    margin: 0px auto;
+}
+
+.answers tr:last-child{
+    width: 50px;
+}
+
+img {
+    margin: 0px 15px 0px 15px;
+}
+
+.movies {
+    margin: 15px;
+}

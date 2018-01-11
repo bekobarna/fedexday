@@ -19,6 +19,7 @@ public class Quiz {
             inverseJoinColumns=@JoinColumn(name="movie_id", referencedColumnName="id"))
     List<Movie> movies;
 
+
     public Quiz() {
         this.movies = new ArrayList<>();
     }

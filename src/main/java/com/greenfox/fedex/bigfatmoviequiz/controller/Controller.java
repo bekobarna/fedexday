@@ -23,6 +23,8 @@ public class Controller {
    @Autowired
     MovieRepo movieRepo;
 
+    int score;
+
     @GetMapping({"/",""})
     public String index(){
         return "index";
@@ -35,23 +37,24 @@ public class Controller {
 
     @GetMapping("/quiz")
     public String quiz(Model model, @RequestParam(defaultValue = "0") int page) {
-
-        ArrayList<Long> usedQuestions = new ArrayList<>();
-
-//        for (int i = 0; i < 9; i++) {
-//            long randomNumber = quizService.getRandomNumber();
-//            if (!usedQuestions.contains(randomNumber)) {
-//                usedQuestions.add(randomNumber);
-//                model.addAttribute("movies2", quizRepo.findById((randomNumber)).getMovies());
-//                i++;
-//            } else {
-//                i++;
-//            }
-//        }
-
+        
         model.addAttribute("movies", movieRepo.findAll(new PageRequest(page, 1)));
         model.addAttribute("currentPage", page);
-        return "quiz";
+
+        return page <= 10 ? "quiz" : "score";
+    }
+
+    @GetMapping("/score")
+    public String score(Model model){
+        model.addAttribute("score", score);
+        score = 0;
+        return "score";
+    }
+
+    @GetMapping("/up")
+    public String up(){
+        score++;
+        return "redirect:/quiz";
     }
 
 }
