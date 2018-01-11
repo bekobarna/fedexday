@@ -70,3 +70,7 @@ img {
 .movies {
     margin: 15px;
 }
+
+.scores button {
+    margin-top: 15px;
+}
