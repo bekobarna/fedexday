@@ -10,11 +10,11 @@
 
 <div class="backforth">
     <ul class="back">
-        <li><a th:if="${currentPage} == 0" th:href="@{/}" th:text="Back" class="nav-link"></a></li>
-        <li><a th:if="${currentPage} &gt; 0" th:href="@{/quiz/(page=${currentPage-1})}" th:text="Back" class="nav-link"></a></li>
+        <li><a th:if="${currentPage} == 0" th:href="@{/}" th:text="Back" class="btn btn-success"></a></li>
+        <li><a th:if="${currentPage} &gt; 0" th:href="@{/quiz/(page=${currentPage-1})}" th:text="Back" class="btn btn-success"></a></li>
     </ul>
     <ul class="forth">
-        <li ><a th:href="@{/quiz/(page=${currentPage+1})}" th:text="Next" class="nav-link"></a></li>
+        <li ><a th:href="@{/quiz/(page=${currentPage+1})}" th:text="Next" class="btn btn-success"></a></li>
     </ul>
 </div>
 
@@ -37,7 +37,7 @@
             <ul class="nav nav-pills">
                 <li class="nav-item" th:each="i : ${#numbers.sequence(0, 10)}"></li>
             </ul>
-    <p class="end"><a th:href="@{/score}" th:text="End" class="nav-link"></a></p>
+    <p class="end"><a th:href="@{/score}" th:text="End" class="btn btn-danger"></a></p>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
