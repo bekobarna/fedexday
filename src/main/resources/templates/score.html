@@ -6,8 +6,17 @@
     <link rel="stylesheet" href="/style.css"/>
     <meta charset="utf-8" />
 </head>
-<body>
+<body class="scores">
+
    <p th:text="'Your score is: ' + '10/' + ${score}"></p>
+
+   <p th:if="${score} &gt; 8"> You master cinephile, you!</p>
+   <img th:if="${score} &gt; 8" th:src="@{https://i.redd.it/45zt97xnii301.jpg}"/>
+   <p th:if="${score} &lt; 9 and ${score} &gt; 5"> Average performance!</p>
+   <img th:if="${score} &lt; 9 and ${score} &gt; 5" th:src="@{http://cmzone.vzbqbxhynotw9ion96xv.netdna-cdn.com/wp-content/uploads/2017/08/The-Worlds-End.jpg}" height="500"/>
+   <p th:if="${score} &lt; 6"> Watch more movies, Dude!</p>
+   <img th:if="${score} &lt; 6" th:src="@{https://statcdn.fandango.com/MPX/image/NBCU_Fandango/200/159/TropicThunder_SimpleJack.jpg}" height="500"/>
+
 
    <form th:action="@{/}" method="get">
        <button class="btn btn-success" type="submit">Play Again!</button>
